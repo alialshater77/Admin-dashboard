@@ -6,8 +6,30 @@ import React from 'react'
 
 const index = () => {
     return (
-        <Box width="95%" m = "20px">
-            <Header title="Bar Chart" subtitle="Simple Bar Chart"/>
+        <Box width="95%" m = "20px" >
+            <Box sx={{
+                width:{
+                    xs:"100%"
+                },
+                display:{
+                    xs:"flex",
+                    md:"block"
+                },
+                justifyContent:{
+                    xs: "center",
+                    md: 'none'
+                },
+                alignItems:{
+                xs: "center",
+                md: 'none'
+                },
+                flexDirection:{
+                xs: "column",
+                md: 'none'
+                },
+            }}>
+                <Header title="Bar Chart" subtitle="Simple Bar Chart"/>
+            </Box>
             <Box height="75vh">
                 <BarCharts/>
             </Box>

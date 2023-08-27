@@ -11,7 +11,29 @@ const index = () => {
 
     return (
         <Box width="95%" m = "20px">
-            <Header title="Pie Chart" subtitle="Simple Pie Chart"/>
+            <Box sx={{
+                width:{
+                    xs:"100%"
+                },
+                display:{
+                    xs:"flex",
+                    md:"block"
+                },
+                justifyContent:{
+                    xs: "center",
+                    md: 'none'
+                },
+                alignItems:{
+                xs: "center",
+                md: 'none'
+                },
+                flexDirection:{
+                xs: "column",
+                md: 'none'
+                },
+            }}>
+                <Header title="Geography Chart" subtitle="Simple Geo Chart"/>
+            </Box>
             <Box mt="40px" height="70vh" border = {` 1px solid ${colors.gray[100]}`} borderRadius="4px">
                 <Geography/>
             </Box>

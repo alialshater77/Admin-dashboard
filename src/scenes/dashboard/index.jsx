@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../components/Header'
-import { Box , Button , IconButton , Typography , useTheme } from '@mui/material';
+import { Box , Button , IconButton , Typography , useMediaQuery, useTheme } from '@mui/material';
 import { tokens } from '../../theme';
 import { mockTransactions } from '../../data/mockData';
 import DownloadForOfflineOutlinedIcon from '@mui/icons-material/DownloadForOfflineOutlined';
@@ -17,20 +17,41 @@ import ProgressCircle from '../../components/ProgressCircle';
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode) ;
+  const isMobile = useMediaQuery('(min-width: 767px)');
+  
   return (
-    <Box m="20px">
+    <Box sx={{
+      display:{
+        xs: 'flex',
+        md: 'block'
+      },
+      justifyContent:{
+        xs: "center",
+        md: 'none'
+      },
+      alignItems:{
+        xs: "center",
+        md: 'none'
+      },
+      flexDirection:{
+        xs: "column",
+        md: 'none'
+      },
+    }} m="20px">
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="DASHBOARD" subtitle="Welcom to your dashboard"/>
       
-
-        <Box>
-        <Button
-        sx={{ backgroundColor: colors.blueAccent[700] , color: colors.gray[100] , fontSize: "14px" , fontWeight: "bold" , padding: "10px 20px"}}
-        >
-          <DownloadForOfflineOutlinedIcon sx={{ mr: "10px"}}/>
-          Download Reports
-        </Button>
-        </Box>
+        { isMobile && (
+          <Box>
+          <Button
+          sx={{ backgroundColor: colors.blueAccent[700] , color: colors.gray[100] , fontSize: "14px" , fontWeight: "bold" , padding: "10px 20px"}}
+          >
+            <DownloadForOfflineOutlinedIcon sx={{ mr: "10px"}}/>
+            Download Reports
+          </Button>
+          </Box>
+        )}
+        
       </Box>
 
       {/* Grid & Charts */}
@@ -40,9 +61,22 @@ const Dashboard = () => {
       gridAutoRows="140px"
       gap="20px"
       mt="30px"
+      sx={{ flexDirection :{
+        xs: "column"
+      }, display:{
+        xs: "flex",
+        md: "grid"
+      }, gap:{
+        xs:"20px",
+      }}}
       >
         {/* Row1 */}
-        <Box gridColumn="span 3" backgroundColor={colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
+        <Box sx={{
+          gridColumn:{
+            sm: "span 12",
+            md: "span 3"
+          }
+        }} gridColumn="span 3" backgroundColor={colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
           <StatBox
           title="12,361"
           subtitle="Emails Sent"
@@ -54,7 +88,12 @@ const Dashboard = () => {
           />
         </Box>
 
-        <Box gridColumn="span 3" backgroundColor={colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
+        <Box sx={{
+          gridColumn:{
+            sm: "span 12",
+            md: "span 3"
+          }
+        }} gridColumn="span 3" backgroundColor={colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
           <StatBox
           title="431,225"
           subtitle="Sales Obtained"
@@ -66,7 +105,12 @@ const Dashboard = () => {
           />
         </Box>
 
-        <Box gridColumn="span 3" backgroundColor={colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
+        <Box sx={{
+          gridColumn:{
+            sm: "span 12",
+            md: "span 3"
+          }
+        }} gridColumn="span 3" backgroundColor={colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
           <StatBox
           title="32,441"
           subtitle="New Clients"
@@ -78,7 +122,12 @@ const Dashboard = () => {
           />
         </Box>
 
-        <Box gridColumn="span 3" backgroundColor={colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
+        <Box sx={{
+          gridColumn:{
+            sm: "span 12",
+            md: "span 3"
+          }
+        }} gridColumn="span 3" backgroundColor={colors.primary[400]} display="flex" alignItems="center" justifyContent="center">
           <StatBox
           title="1,361,134"
           subtitle="Traffic Inbound"

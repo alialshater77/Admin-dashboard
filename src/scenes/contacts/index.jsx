@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box , useTheme} from '@mui/material';
+import { Box , useMediaQuery, useTheme} from '@mui/material';
 import {GridToolbar, DataGrid} from "@mui/x-data-grid";
 import { mockDataContacts } from "../../data/mockData";
 import { tokens } from '../../theme';
@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 const index = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const isMobile = useMediaQuery('(min-width: 767px)');
     const columns = [
         {field : "id" ,headerName: "ID",flex: 0.5},
         {field : "registrarId" ,headerName: "Registrar ID"},
@@ -22,7 +23,24 @@ const index = () => {
     ]
 
     return (
-        <Box width="95%" ml="1.8%">
+        <Box width="95%" ml="1.8%" sx={{
+            display:{
+                xs:"flex",
+                md:"block"
+            },
+            justifyContent:{
+                xs: "center",
+                md: 'none'
+            },
+            alignItems:{
+            xs: "center",
+            md: 'none'
+            },
+            flexDirection:{
+            xs: "column",
+            md: 'none'
+            }
+        }}>
             <Header title = "CONTACTS" subtitle="List of Cintacts for Future Reference"/>
             <Box  
                 m="40px 0 0 0"
@@ -55,7 +73,7 @@ const index = () => {
             >
                 <DataGrid
                     rows={mockDataContacts}
-                    columns={columns}
+                    columns={!isMobile ? columns.slice(1,3) : columns}
                 />
             </Box>
         </Box>

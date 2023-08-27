@@ -48,12 +48,41 @@ const Calendar = () => {
     };
 
     return (
-        <Box m="0 20px">
+        <Box m="0 20px" sx={{
+            display:{
+                xs:"flex",
+                md:"block"
+            },
+            justifyContent:{
+                xs: "center",
+                md: 'none'
+            },
+            alignItems:{
+            xs: "center",
+            md: 'none'
+            },
+            flexDirection:{
+            xs: "column",
+            md: 'none'
+            }
+        }}>
             <Header title ="CALENDAR" subtitle={"Full Calendar Interactive Page"}/>
 
-            <Box mt="35px" display="flex" justifyContent="space-between">
+            <Box mt="35px" display="flex" justifyContent="space-between" sx={{
+                flexDirection:{
+                    xs:"column",
+                    md:"row"
+                },marginLeft:{
+                    xs: "90px",
+                    md: "0px"
+                }
+            }}>
                 {/* calendar sidebar */}
-                <Box flex="1 1 20%" backgroundColor ={colors.primary[400]} p="15px" borderRadius="4px">
+                <Box flex="1 1 20%" backgroundColor ={colors.primary[400]} p="15px" borderRadius="4px" sx={{
+                    width:{
+                        xs:"100%"
+                    }
+                }}>
                     <Typography variant="h5">
                         Events
                     </Typography>
